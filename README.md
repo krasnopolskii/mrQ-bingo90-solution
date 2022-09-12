@@ -4,7 +4,7 @@ This solution generates 10k strips in around 350-390 mills
 
 It generates strips with no single error (no regeneration needed), 
 
-Assume N is a bingo range (available numbers) and M is a strip size and P is a number of columns than time complexity is O(n * (m + p))
+Assume N is a bingo range (available numbers) and M is a strip size and P is a number of columns and Q is a number of rows (total in strip) than time complexity is O(n * (m + p + q))
 
 ```
 attempts: 100
