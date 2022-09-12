@@ -1,5 +1,11 @@
 # mrQ-bingo90-solution
 
+This solution generates 10k strips in around 350-390 mills 
+
+It generates strips with no single error (no regeneration needed), 
+
+Assume N is a bingo range (available numbers) and M is a strip size and P is a number of columns than time complexity is O(n * (m + p))
+
 ```
 attempts: 100
 totalTime: 37364
