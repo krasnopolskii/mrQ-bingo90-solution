@@ -25,7 +25,8 @@ public class Ticket implements Comparable<Ticket> {
             }
             columnSizes[colNum] = size;
         }
-        this.lastFilledColumn = -1;
+        lastFilledColumn = -1;
+        recalculateFilledColumn();
     }
 
     public Integer[][] getRows() {
@@ -50,9 +51,20 @@ public class Ticket implements Comparable<Ticket> {
             }
         }
         if (columnSizes[colNum] == 0) {
-            lastFilledColumn = -1;
+            recalculateFilledColumn();
         }
         return inserted;
+    }
+
+    private void recalculateFilledColumn() {
+        for (int i = lastFilledColumn; i < columnSizes.length - 1; i++) {
+            if (columnSizes[i + 1] == 0) {
+                lastFilledColumn = i + 1;
+            }
+            else {
+                break;
+            }
+        }
     }
 
     @Override

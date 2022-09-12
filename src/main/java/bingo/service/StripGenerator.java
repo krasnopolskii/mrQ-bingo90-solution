@@ -21,13 +21,12 @@ public class StripGenerator {
     public Strip generateStrip() {
         var rowTemplates = rowTemplatesGenerator.generateTemplates();
         var tickets = createTickets(rowTemplates);
-        var visited = new ArrayList<Ticket>(BingoConfiguration.STRIP_SIZE);
+        var visited = new ArrayList<Ticket>(1);
         for (int i = 1; i <= BingoConfiguration.BINGO_RANGE; i++) {
             var ticket = tickets.poll();
             visited.add(ticket);
-            while (!ticket.add(i)) {
-                ticket = tickets.poll();
-                visited.add(ticket);
+            if (!ticket.add(i)) {
+                throw new RuntimeException("wrong ticket");
             }
             shuffleQueue(tickets, visited);
             visited = new ArrayList<>();
